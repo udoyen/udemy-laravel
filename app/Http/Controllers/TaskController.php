@@ -28,7 +28,7 @@ class TaskController extends Controller
 
 
     public function getWelcome($text = null){
-    //  $text = "Hello World!";
+    // $text = "Hello World!";
       return view('welcome', array('text' => $text));
     }
 }

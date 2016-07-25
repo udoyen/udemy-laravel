@@ -11,21 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@getWelcome');
 
 /*
 Route::post('/home', function(){
   return 'Home - POST';
 });
 */
-Route::get('/dashboard', ['middleware' => 'age', function(){
-  return 'This is the dashboard';
-}]);
 
-Route::get('/restricted', function(){
-  return 'You are not allowed here';
+Route::group(['middleware' => ['age']], function(){
+  Route::get('/dashboard', 'AgeController@getDashboard');
+
 });
+
+Route::get('/restricted', 'AgeController@getRestricted');
 
 Route::controller('tasks', 'TaskController');
